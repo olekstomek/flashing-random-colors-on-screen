@@ -28,7 +28,9 @@ $(document).ready(function(){
 			values: [ redStart, redEnd ],
 			slide: function( event, ui ) {
 				redStart = ( ui.values[ 0 ] );
-				redEnd = ( ui.values[ 1 ] );	
+				redEnd = ( ui.values[ 1 ] );
+				$("#slider-red").find(".ui-slider-handle:first").text(redStart);
+				$("#slider-red").find(".ui-slider-handle:last").text(redEnd);
 			}
 		});	
 		$( " #slider-green " ).slider({
@@ -41,6 +43,8 @@ $(document).ready(function(){
 			slide: function( event, ui ) {
 				greenStart = ( ui.values[ 0 ] );
 				greenEnd = ( ui.values[ 1 ] );
+				$("#slider-green").find(".ui-slider-handle:first").text(greenStart);
+				$("#slider-green").find(".ui-slider-handle:last").text(greenEnd);
 			}
 		});	
 		$( " #slider-blue " ).slider({
@@ -53,6 +57,8 @@ $(document).ready(function(){
 			slide: function( event, ui ) {
 				blueStart = ( ui.values[ 0 ] );
 				blueEnd = ( ui.values[ 1 ] );
+				$("#slider-blue").find(".ui-slider-handle:first").text(blueStart);
+				$("#slider-blue").find(".ui-slider-handle:last").text(blueEnd);
 			}
 		});
 	});
