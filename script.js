@@ -1,39 +1,62 @@
 $(document).ready(function(){
-	var red;
-	var green;
-	var blue;
+	var redStart = 0;
+	var redEnd = 255;
+	var greenStart = 0;
+	var greenEnd = 255;
+	var blueStart = 0;
+	var blueEnd = 255;
+		
   $(document).mousemove(function(event){
-		red = $("#modalWindow #redValue").val();
-		green = $("#modalWindow #greenValue").val();
-		blue = $("#modalWindow #blueValue").val();
-  
     rgb = [
-        Math.round(Math.random() * red),
-        Math.round(Math.random() * green),
-        Math.round(Math.random() * blue)
+        Math.round(Math.random() * (redEnd - redStart) + redStart),
+        Math.round(Math.random() * (greenEnd - greenStart) + greenStart),
+        Math.round(Math.random() * (blueEnd - blueStart) + blueStart)
     ];
     
     $(document.body).css('background','rgb('+rgb.join(',')+')');
 	console.log('background','rgb('+rgb.join(',')+')');
   });
-});
-
-$(document).click(function(){
-	$("#modalWindow").modal();
-	$(".color-picker").spectrum({
-		showInput: true,
-		showInitial: true,
-		className: "full-spectrum",
-		preferredFormat: "rgb",
-		change: function(color) {
-			red = color.toRgb().r;
-			green = color.toRgb().g;
-			blue = color.toRgb().b;
-			$("#modalWindow #redValue").val(red);
-			$("#modalWindow #greenValue").val(green);
-			$("#modalWindow #blueValue").val(blue);
-		}
+  
+  $(document).click(function(){
+		$( " #modalWindow " ).modal();
+		$( " #slider-red " ).slider({
+			animate:"slow",
+			orientation: "horizontal",
+			range:true,
+			min: 0,
+			max: 255,
+			values: [ redStart, redEnd ],
+			slide: function( event, ui ) {
+				redStart = ( ui.values[ 0 ] );
+				redEnd = ( ui.values[ 1 ] );	
+			}
+		});	
+		$( " #slider-green " ).slider({
+			animate:"slow",
+			orientation: "horizontal",
+			range:true,
+			min: 0,
+			max: 255,
+			values: [ greenStart, greenEnd ],
+			slide: function( event, ui ) {
+				greenStart = ( ui.values[ 0 ] );
+				greenEnd = ( ui.values[ 1 ] );
+			}
+		});	
+		$( " #slider-blue " ).slider({
+			animate:"slow",
+			orientation: "horizontal",
+			range:true,
+			min: 0,
+			max: 255,
+			values: [ blueStart, blueEnd ],
+			slide: function( event, ui ) {
+				blueStart = ( ui.values[ 0 ] );
+				blueEnd = ( ui.values[ 1 ] );
+			}
+		});
 	});
-
 });
+
+
 
