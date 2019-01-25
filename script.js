@@ -1,8 +1,11 @@
 $(document).ready(function(){
-  $(document).mousemove(function(event, red, green, blue){
-		var red = $("#modalWindow #redValue").val();
-		var green = $("#modalWindow #greenValue").val();
-		var blue = $("#modalWindow #blueValue").val();
+	var red;
+	var green;
+	var blue;
+  $(document).mousemove(function(event){
+		red = $("#modalWindow #redValue").val();
+		green = $("#modalWindow #greenValue").val();
+		blue = $("#modalWindow #blueValue").val();
   
     rgb = [
         Math.round(Math.random() * red),
@@ -16,6 +19,21 @@ $(document).ready(function(){
 });
 
 $(document).click(function(){
-	$('#modalWindow').modal();
+	$("#modalWindow").modal();
+	$(".color-picker").spectrum({
+		showInput: true,
+		showInitial: true,
+		className: "full-spectrum",
+		preferredFormat: "rgb",
+		change: function(color) {
+			red = color.toRgb().r;
+			green = color.toRgb().g;
+			blue = color.toRgb().b;
+			$("#modalWindow #redValue").val(red);
+			$("#modalWindow #greenValue").val(green);
+			$("#modalWindow #blueValue").val(blue);
+		}
+	});
+
 });
 
