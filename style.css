@@ -8,3 +8,7 @@
     color: #c134de !important;
     text-align: center !important;
 }
+
+ .warning {
+    color: red;
+ }

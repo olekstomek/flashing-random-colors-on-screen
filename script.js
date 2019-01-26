@@ -18,8 +18,8 @@ $(document).ready(function(){
   });
   
   $(document).click(function(){
-		$( " #modalWindow " ).modal();
-		$( " #slider-red " ).slider({
+		$( "#modalWindow" ).modal();
+		$( "#slider-red" ).slider({
 			animate:"slow",
 			orientation: "horizontal",
 			range:true,
@@ -29,11 +29,16 @@ $(document).ready(function(){
 			slide: function( event, ui ) {
 				redStart = ( ui.values[ 0 ] );
 				redEnd = ( ui.values[ 1 ] );
-				$("#slider-red").find(".ui-slider-handle:first").text(redStart);
-				$("#slider-red").find(".ui-slider-handle:last").text(redEnd);
+				$( "#slider-red" ).find( ".ui-slider-handle:first" ).text(redStart);
+				$( "#slider-red" ).find( ".ui-slider-handle:last" ).text(redEnd);
+				if (redStart === redEnd) {
+					$( "p:first" ).html( "<span class='warning'>Red: The red color is unchanged</span>" );
+				} else if (redStart !== redEnd) {
+					$( "p:first" ).html( "<span>Red: </span>" );
+				}
 			}
 		});	
-		$( " #slider-green " ).slider({
+		$( "#slider-green" ).slider({
 			animate:"slow",
 			orientation: "horizontal",
 			range:true,
@@ -43,11 +48,16 @@ $(document).ready(function(){
 			slide: function( event, ui ) {
 				greenStart = ( ui.values[ 0 ] );
 				greenEnd = ( ui.values[ 1 ] );
-				$("#slider-green").find(".ui-slider-handle:first").text(greenStart);
-				$("#slider-green").find(".ui-slider-handle:last").text(greenEnd);
+				$( "#slider-green" ).find( ".ui-slider-handle:first" ).text(greenStart);
+				$( "#slider-green" ).find( ".ui-slider-handle:last" ).text(greenEnd);
+				if (greenStart === greenEnd) {
+					$( "p:eq(1)" ).html( "<span class='warning'>Green: The green color is unchanged</span>" );
+				} else if (greenStart !== greenEnd) {
+					$( "p:eq(1)" ).html( "<span>Green: </span>" );
+				}
 			}
 		});	
-		$( " #slider-blue " ).slider({
+		$( "#slider-blue" ).slider({
 			animate:"slow",
 			orientation: "horizontal",
 			range:true,
@@ -57,8 +67,13 @@ $(document).ready(function(){
 			slide: function( event, ui ) {
 				blueStart = ( ui.values[ 0 ] );
 				blueEnd = ( ui.values[ 1 ] );
-				$("#slider-blue").find(".ui-slider-handle:first").text(blueStart);
-				$("#slider-blue").find(".ui-slider-handle:last").text(blueEnd);
+				$( "#slider-blue" ).find( ".ui-slider-handle:first" ).text(blueStart);
+				$( "#slider-blue" ).find( ".ui-slider-handle:last" ).text(blueEnd);
+				if (blueStart === blueEnd) {
+					$( "p:last" ).html( "<span class='warning'>Blue: The blue color is unchanged</span>" );
+				} else if (blueStart !== blueEnd) {
+					$( "p:last" ).html( "<span>Blue: </span>" );
+				}
 			}
 		});
 	});
