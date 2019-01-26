@@ -17,6 +17,15 @@ $(document).ready(function(){
 	console.log('background','rgb('+rgb.join(',')+')');
   });
   
+  $( "#default-values" ).click(function() {
+	redStart = 0;
+	redEnd = 255;
+	greenStart = 0;
+	greenEnd = 255;
+	blueStart = 0;
+	blueEnd = 255;
+});
+  
   $(document).click(function(){
 		$( "#modalWindow" ).modal();
 		$( "#slider-red" ).slider({
