@@ -17,14 +17,20 @@ $(document).ready(function(){
 	console.log('background','rgb('+rgb.join(',')+')');
   });
   
-  $( "#default-values" ).click(function() {
+  $( "#default-values" ).click(function(event, ui) {
 	redStart = 0;
 	redEnd = 255;
 	greenStart = 0;
 	greenEnd = 255;
 	blueStart = 0;
 	blueEnd = 255;
-});
+	$( "#slider-red" ).find( ".ui-slider-handle:first" ).text(redStart);
+	$( "#slider-red" ).find( ".ui-slider-handle:last" ).text(redEnd);	
+	$( "#slider-green" ).find( ".ui-slider-handle:first" ).text(greenStart);
+	$( "#slider-green" ).find( ".ui-slider-handle:last" ).text(greenEnd);	
+	$( "#slider-blue" ).find( ".ui-slider-handle:first" ).text(blueStart);
+	$( "#slider-blue" ).find( ".ui-slider-handle:last" ).text(blueEnd);
+  });
   
   $(document).click(function(){
 		$( "#modalWindow" ).modal();
