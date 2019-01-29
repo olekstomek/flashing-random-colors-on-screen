@@ -14,7 +14,7 @@
   <script src="script.js"></script>
 </head>
 <body>
-<div class="modal fade" id="modalWindow">
+<div class="modal fade" id="modalWindow" data-backdrop="static">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			
@@ -35,8 +35,29 @@
 				<div id="slider-blue"></div></div>
 			
 			<div class="modal-footer">
-				<button type="button" class="btn btn-warning" id="default-values">Default values</button>
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				<div class="container">
+					<div class="row">
+						<div class="col-6">
+							Duration in [s]: <input type="number" id="timeDuration" min="1" steps="1" class="form-control" value="9">
+						</div>	
+						<div class="col-6">
+							Rate of changes in [ms]: <input type="number" id="rateOfChanges" min="1" steps="1" class="form-control" value="30"> 
+						</div>
+					</div>
+					<div class="row justify-content-end">
+						<div class="col-12">
+							<div class="custom-control custom-switch align-bottom">
+								<input type="checkbox" class="custom-control-input" id="automateChangeBackground">
+								<label class="custom-control-label" for="automateChangeBackground">Auto background change</label>
+							</div>
+							<div style="display: none" class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+								<span class="sr-only">Loading...</span>
+							</div>
+							<button type="button" class="btn btn-danger float-right ml-1" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-warning float-right" id="default-values">Default values</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
